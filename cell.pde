@@ -13,7 +13,7 @@ class Cell {
 
 void show() {
   if(alive) {
-    fill(20, 20, 250);
+    fill(128, 255, 0);
   } else {
     noFill();
   }
