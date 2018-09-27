@@ -7,9 +7,9 @@ int rows,cols;
 boolean pauseSim = false;
 
 void copyArray(Cell[][] origarr, Cell[][] newarr) {
-  for(int j = 0; j < cols; j++) {
-      for(int i = 0; i < rows; i++) {
-        newarr[i][j] = origarr[i][j];
+  for(int row = 0; row < rows; row++) {
+      for(int col = 0; col < cols; col++) {
+        newarr[row][col] = origarr[row][col];
       }  
   }
 }
@@ -26,13 +26,13 @@ void setup() {
   tempState = new Cell[rows][cols];
   
   // Initalize the current state with random alive cells
-  for(int j = 0; j < cols; j++) {
-    for(int i = 0; i < rows; i++) {
-      currentState[i][j] = new Cell(i,j,cellSize);
+  for(int row = 0; row < rows; row++) {
+      for(int col = 0; col < cols; col++) {
+      currentState[row][col] = new Cell(row,col,cellSize);
       
       float test = random(0,1);
       if(test > .5) {
-        currentState[i][j].alive = false;
+        currentState[row][col].alive = false;
       }
     }  
   }
@@ -44,13 +44,13 @@ void setup() {
   noStroke();
   fill(255);
   int na = 0;
-  for(int j = 0; j < cols; j++) {
-      for(int i = 0; i < rows; i++) {
+  for(int row = 0; row < rows; row++) {
+      for(int col = 0; col < cols; col++) {
         //println("CURRENT CELL: " + i + ", " + j);
-        na = numAliveNeighbors(i,j);
-        currentState[i][j].aliveNeighbors = na;
-        currentState[i][j].show();
-        tempState[i][j].updateAliveStatus(na);
+        na = numAliveNeighbors(row,col);
+        currentState[row][col].aliveNeighbors = na;
+        currentState[row][col].show();
+        tempState[row][col].updateAliveStatus(na);
         //println("CELL:" + i + "," + j + ":" + currentState[i][j].aliveNeighbors);
         //na = 0;
       }
@@ -90,12 +90,12 @@ void draw() {
   noStroke();
   fill(255);
   int numAlive;
-  for(int j = 0; j < cols; j++) {
-      for(int i = 0; i < rows; i++) {
-        numAlive = numAliveNeighbors(i,j);
-        currentState[i][j].aliveNeighbors = numAlive;
-        currentState[i][j].show();
-        tempState[i][j].updateAliveStatus(numAlive);
+  for(int row = 0; row < rows; row++) {
+      for(int col = 0; col < cols; col++) {
+        numAlive = numAliveNeighbors(row,col);
+        currentState[row][col].aliveNeighbors = numAlive;
+        currentState[row][col].show();
+        tempState[row][col].updateAliveStatus(numAlive);
       }
   }
   copyArray(tempState, currentState);
@@ -105,10 +105,10 @@ void draw() {
 
 int numAliveNeighbors(int x, int y) {
   int alive = 0;
-  for(int j = -1; j < 2; j++) {
-    for(int i = -1; i < 2; i++) {
-      int checkx = x + i;
-      int checky = y + j;
+  for(int row = -1; row < 2; row++) {
+    for(int col = -1; col < 2; col++) {
+      int checkx = x + row;
+      int checky = y + col;
       //print("CHECKING: "+checkx+","+checky);
       // check if arr vals are out of bounds and not itself
       if( (checkx == x) && (checky == y) ) {
