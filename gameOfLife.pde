@@ -1,7 +1,7 @@
 Cell[][] currentState;
 Cell[][] tempState;
 
-int cellSize = 10;
+int cellSize = 100;
 int rows,cols;
 
 boolean pauseSim = false;
