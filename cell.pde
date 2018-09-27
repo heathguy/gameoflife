@@ -20,14 +20,12 @@ void show() {
   stroke(61);
   rect(x*s,y*s,s,s);
   
-  /*
-  textSize(32);
-  fill(255,100,0);
+  textSize(24);
+  fill(255);
   textAlign(CENTER,RIGHT);
   text(x,x*s,y*s+s);
   text(y,x*s+16,y*s+s);
   text(aliveNeighbors,(x*s)+(s/2)-16,(y*s)+(s/2)+16);
-  */
 }
 
 void updateAliveStatus(int numAliveNeighbors) {
