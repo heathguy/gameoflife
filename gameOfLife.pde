@@ -4,7 +4,7 @@ Cell[][] tempState;
 int cellSize = 100;
 int rows,cols;
 
-boolean pauseSim = false;
+boolean pauseSim = true;
 
 void copyArray(Cell[][] origarr, Cell[][] newarr) {
   for(int row = 0; row < rows; row++) {
